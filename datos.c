@@ -38,6 +38,7 @@ typedef struct juego{
     int ventas_EEUU;
     int ventas_EU;
     int ventas_Japon;
+    bool exitoso;
 }juego;
 
 typedef juego dataset[];

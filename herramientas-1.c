@@ -1,3 +1,4 @@
+#include <stdbool.h>
 void normalizar (double *datos, int ndatos){
     int i;
     float maximo, minimo;
@@ -15,9 +16,21 @@ void normalizar (double *datos, int ndatos){
     }
 }
 
+void set_label(dataset datas){
+    for (data elemento : datas){
+        if (elemento.ventas_g<10000000){
+            elemento.exitoso=False;
+        } else {
+            elemento.exitoso=True;
+        }
+    }
+}
+
+void distancias()
+
 void ENN (){
 }
 
-void knn (){
-    //hola mundo
+void knn (data datos, dataset dataset){
+
 }
