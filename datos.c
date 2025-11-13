@@ -25,7 +25,7 @@ typedef int Plataforma[11];
 /*0=Pc, 1=ps5, 2=xbox one, 3=ps4, 4=xbox series s/x, 5=xbox 360, 6=play3, 7=Wii U, 8=Wii, 9=ios, 10=macOS, 11=swich*/
 
 
-typedef struct juego{
+typedef struct Juego{
     Consola consola;
     Publicador publicador;
     Desarrollador desarrollador;
@@ -39,6 +39,13 @@ typedef struct juego{
     int ventas_EU;
     int ventas_Japon;
     bool exitoso;
-}juego;
+}Juego;
 
-typedef juego dataset[];
+typedef Juego Dataset[];
+
+typedef Distancias[][2];
+
+
+
+
+ 
