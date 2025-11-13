@@ -16,7 +16,7 @@ void normalizar (double *datos, int ndatos){
     }
 }
 
-void set_label(dataset datas){
+void set_label(Dataset datas){
     for (data elemento : datas){
         if (elemento.ventas_g<10000000){
             elemento.exitoso=False;
@@ -29,7 +29,7 @@ void set_label(dataset datas){
 #include <math.h>
 #include <stdbool.h>
 
-double distancia_juego(juego a, juego b) {
+double distancia_juego(Juego a, Juego b) {
     double suma = 0.0;
     double d; // distancia parcial
 
@@ -85,9 +85,40 @@ double distancia_juego(juego a, juego b) {
 
 
 
-void ENN (){
+void ENN (Dataset dataset){
+    for (Juego dato : dataset){
+        knn(juego, dataset);
+        /*todo
+            -eliminar elementos del dataset
+        */
+    }
 }
 
-void knn (data datos, dataset dataset){
+void knn (Juego datos, Dataset dataset, int n, int k){
+    Distancias distancias[n][2]
+    int si, no = 0;
+    ENN(dataset);//limpio el dataset
 
+    for (int i=0;i<n,i++){//calculo distancias
+        distancias[i][0]=distancia_juego(datos, dataset[i]);
+        distancias[i][1]=i;
+    }
+
+    ordena(distancias);//ordeno distancias
+
+    for (int j=0;j<k;j++){//calculo meida etiquetas de las k primeras distancias
+        if (dataset[[distancias[j][1]]].exitoso){
+            si++;
+        } else {
+            no++;
+        }
+    }
+
+    if (si>no){//calculo etiquetas datos
+        datos.exitoso=True;
+    } else if (si<no){
+        datos.exitoso=False;
+    } else {
+        datos.exitoso=dataset[[distancias[0][1]]].exitoso;
+    }
 }
