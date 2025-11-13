@@ -1,4 +1,7 @@
+#include <math.h>
 #include <stdbool.h>
+#include "datos.c"
+
 void normalizar (double *datos, int ndatos){
     int i;
     float maximo, minimo;
@@ -16,18 +19,16 @@ void normalizar (double *datos, int ndatos){
     }
 }
 
-void set_label(Dataset datas){
-    for (data elemento : datas){
-        if (elemento.ventas_g<10000000){
-            elemento.exitoso=False;
+void set_label(Dataset datas, int n){
+    for (int i=0;i<n;i++){
+        if (datas[i].ventas_g<10000000){
+            datas[i].exitoso=false;
         } else {
-            elemento.exitoso=True;
+            datas[i].exitoso=true;
         }
     }
 }
 
-#include <math.h>
-#include <stdbool.h>
 
 double distancia_juego(Juego a, Juego b) {
     double suma = 0.0;
@@ -83,23 +84,12 @@ double distancia_juego(Juego a, Juego b) {
     return sqrt(suma);
 }
 
-
-
-void ENN (Dataset dataset){
-    for (Juego dato : dataset){
-        knn(juego, dataset);
-        /*todo
-            -eliminar elementos del dataset
-        */
-    }
-}
-
-void knn (Juego datos, Dataset dataset, int n, int k){
-    Distancias distancias[n][2]
+bool knn (Juego datos, Dataset dataset, int n, int k){
+    Distancias distancias;
     int si, no = 0;
-    ENN(dataset);//limpio el dataset
+    int x;
 
-    for (int i=0;i<n,i++){//calculo distancias
+    for (int i=0;i<n;i++){//calculo distancias
         distancias[i][0]=distancia_juego(datos, dataset[i]);
         distancias[i][1]=i;
     }
@@ -107,7 +97,7 @@ void knn (Juego datos, Dataset dataset, int n, int k){
     ordena(distancias);//ordeno distancias
 
     for (int j=0;j<k;j++){//calculo meida etiquetas de las k primeras distancias
-        if (dataset[[distancias[j][1]]].exitoso){
+        if (dataset[distancias[0][1]].exitoso){
             si++;
         } else {
             no++;
@@ -115,10 +105,21 @@ void knn (Juego datos, Dataset dataset, int n, int k){
     }
 
     if (si>no){//calculo etiquetas datos
-        datos.exitoso=True;
+        datos.exitoso=true;
     } else if (si<no){
-        datos.exitoso=False;
+        datos.exitoso=false;
     } else {
-        datos.exitoso=dataset[[distancias[0][1]]].exitoso;
+        datos.exitoso=dataset[distancias[0][1]].exitoso;
+    }
+    return datos.exitoso;
+}
+
+void ENN (Dataset dataset, int n, int k){
+    for (int i=0; i<n; i++){        
+        if (knn(dataset[i], dataset, n, k)){
+            for (int j=i+1;j<n;j++){
+                dataset[j-1]=dataset[j];
+            }
+        }
     }
 }
