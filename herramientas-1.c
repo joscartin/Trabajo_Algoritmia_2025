@@ -84,6 +84,29 @@ double distancia_juego(Juego a, Juego b) {
     return sqrt(suma);
 }
 
+void ordena(int distancias[][2], int size) {
+    bool intercambios = true;
+    int numPasada = size - 1;
+    int temp[2];  // Para almacenar temporalmente una fila (par de números)
+    
+    while (numPasada > 0 && intercambios) {
+        intercambios = false;
+        for (int i = 0; i < numPasada; i++) {
+            // Comparamos solo el primer valor de cada fila (distancias[i][0])
+            if (distancias[i][0] > distancias[i + 1][0]) {
+                intercambios = true;
+                // Intercambiamos las filas completas (todas las columnas de la fila)
+                for (int j = 0; j < 2; j++) {
+                    temp[j] = distancias[i][j];
+                    distancias[i][j] = distancias[i + 1][j];
+                    distancias[i + 1][j] = temp[j];
+                }
+            }
+        }
+        numPasada--;
+    }
+}
+
 bool knn (Juego datos, Dataset dataset, int n, int k){
     Distancias distancias;
     int si, no = 0;
