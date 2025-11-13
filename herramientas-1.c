@@ -34,9 +34,9 @@ double distancia_juego(juego a, juego b) {
     double d; // distancia parcial
 
     // 1 Consola, Publicador, Desarrollador → categóricos (0 o 1)
-    if (a.consola != b.consola)  suma += d * d;
-    if (a.publicador != b.publicador)  suma += d * d;
-    if (a.desarrollador != b.desarrollador)  suma += d * d;
+    if (a.consola != b.consola)  suma += 1;
+    if (a.publicador != b.publicador)  suma += 1;
+    if (a.desarrollador != b.desarrollador)  suma += 1;
 
     // 2 Genero (Hamming)
     int dif_gen = 0;
