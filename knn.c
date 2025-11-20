@@ -1,9 +1,5 @@
 #include <stdbool.h>
-/*¿cómo hacer diccionarios?*/
-
 #include <math.h>
-#include <stdbool.h>
-#include "datos.c"
 
 void normalizar (double *datos, int ndatos){
     int i;
