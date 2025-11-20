@@ -1,6 +1,50 @@
 #include <stdbool.h>
 #include <math.h>
 
+typedef struct fecha{
+    int dia;
+    int mes;
+    int año;
+}fecha;
+
+typedef int Consola;
+    /*0=ps3, 1=ps4, 2=ps5, 3=otro*/
+
+
+typedef int Publicador;
+    /*0=Rockstar, 1=Activision, 2=EA, 3=Sony, 4=Bethesda, 5=otro*/
+
+
+typedef int Desarrollador;
+    /*0=Rockstar, 1=Treyarch, 2=Sledgehamer, 3=InfinityWard, 4=EA vancouver, 5=EA Canada, 6=Naughty Dog, 7=EA Sports, 8=Insomniac Games, 9=Bethesda*/
+
+
+typedef int Genero[7];
+    /*0=accion, 1=shooter, 2=Sports, 3=simulacion, 4=rpg, 5=aventura, 6=otro*/
+
+typedef int Plataforma[11];
+/*0=Pc, 1=ps5, 2=xbox one, 3=ps4, 4=xbox series s/x, 5=xbox 360, 6=play3, 7=Wii U, 8=Wii, 9=ios, 10=macOS, 11=swich*/
+
+
+typedef struct Juego{
+    Consola consola;
+    Publicador publicador;
+    Desarrollador desarrollador;
+    Genero genero;
+    Plataforma plataforma;
+    fecha fecha_sal;
+    fecha ult_update;
+    int rating;
+    int ventas_g;
+    int ventas_EEUU;
+    int ventas_EU;
+    int ventas_Japon;
+    bool exitoso;
+}Juego;
+
+typedef Juego Dataset[];
+
+
 void normalizar (double *datos, int ndatos){
     int i;
     float maximo, minimo;
@@ -107,7 +151,7 @@ void ordena(int distancias[][2], int size) {
 }
 
 bool knn (Juego datos, Dataset dataset, int n, int k){
-    Distancias distancias;
+    int distancias[n][2];
     int si, no = 0;
     int x;
 
@@ -116,7 +160,7 @@ bool knn (Juego datos, Dataset dataset, int n, int k){
         distancias[i][1]=i;
     }
 
-    ordena(distancias);//ordeno distancias
+    ordena(distancias, n);//ordeno distancias
 
     for (int j=0;j<k;j++){//calculo meida etiquetas de las k primeras distancias
         if (dataset[distancias[0][1]].exitoso){
@@ -146,49 +190,13 @@ void ENN (Dataset dataset, int n, int k){
     }
 }
 
-typedef struct fecha{
-    int dia;
-    int mes;
-    int año;
-}fecha;
-
-typedef int Consola;
-    /*0=ps3, 1=ps4, 2=ps5, 3=otro*/
 
 
-typedef int Publicador;
-    /*0=Rockstar, 1=Activision, 2=EA, 3=Sony, 4=Bethesda, 5=otro*/
+void main(){
 
+Juego juegos[200];
 
-typedef int Desarrollador;
-    /*0=Rockstar, 1=Treyarch, 2=Sledgehamer, 3=InfinityWard, 4=EA vancouver, 5=EA Canada, 6=Naughty Dog, 7=EA Sports, 8=Insomniac Games, 9=Bethesda*/
-
-
-typedef int Genero[7];
-    /*0=accion, 1=shooter, 2=Sports, 3=simulacion, 4=rpg, 5=aventura, 6=otro*/
-
-typedef int Plataforma[11];
-/*0=Pc, 1=ps5, 2=xbox one, 3=ps4, 4=xbox series s/x, 5=xbox 360, 6=play3, 7=Wii U, 8=Wii, 9=ios, 10=macOS, 11=swich*/
-
-
-typedef struct juego{
-    Consola consola;
-    Publicador publicador;
-    Desarrollador desarrollador;
-    Genero genero;
-    Plataforma plataforma;
-    fecha fecha_sal;
-    fecha ult_update;
-    int rating;
-    int ventas_g;
-    int ventas_EEUU;
-    int ventas_EU;
-    int ventas_Japon;
-    bool exitoso;
-}juego;
-
-typedef juego dataset[];
-dataset juegos;
+	Juego juego;
 
     // Juego 0: PS3 Grand Theft Auto V
     juegos[0].consola = 0;  // PS3
@@ -205,7 +213,9 @@ dataset juegos;
     juegos[0].ventas_EU = 9850000;
     juegos[0].ventas_Japon = 990000;
     juegos[0].exitoso = true;
-
+	
+	
+	
     // Juego 1: PS4 Grand Theft Auto V
     juegos[1].consola = 1;
     juegos[1].publicador = 0;
@@ -605,3 +615,5 @@ dataset juegos;
 
 
 
+
+}
