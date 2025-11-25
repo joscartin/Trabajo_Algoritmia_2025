@@ -1,6 +1,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include <math.h>
+#include <string.h>
 
 typedef struct fecha{
     int dia;
@@ -197,9 +198,40 @@ void main(int argc, char **argv){
 	Juego dataset[5000];
 	float ventas_g, ventas_EEUU, ventas_EU, ventas_Japon, rating;
 	char consola, publicador, desarrollador, salida, last, generos, plataformas;
+    int i=0;
+
+
 	FILE * archivo = fopen(argv[1], "r");
-	printf("si\n");
-	fscanf(archivo, "%s;%s;%s;%f;%f;%f;%f;%s;%s;%f;%s;%s\n", &consola, &publicador, &desarrollador, &ventas_g, &ventas_EEUU, &ventas_EU, &ventas_Japon, &salida, &last, &rating, &generos, &plataformas);
-	printf("no\n");
-	printf("%f, %f, %f, %f\n", ventas_g, ventas_EEUU, ventas_EU, ventas_Japon);
+
+    while(fscanf(archivo, "%s;%s;%s;%f;%f;%f;%f;%s;%s;%f;%s;%s\n", &consola, &publicador, &desarrollador, &ventas_g, &ventas_EEUU, &ventas_EU, &ventas_Japon, &salida, &last, &rating, &generos, &plataformas)!=-1){//como comprobar EOF
+        
+        if (strcmp(&consola, "PS3")==0){
+            dataset[i].consola=0;
+        } else if (strcmp(&consola, "PS4")==0){
+            dataset[i].consola=1;
+        } else if (strcmp(&consola, "PS5")==0){
+            dataset[i].consola=2;
+        } else {
+            dataset[i].consola=3;
+        }
+
+        printf("%d\n", dataset[i].consola);
+
+        /*
+        
+        dataset[i].publicador=publicador;
+        dataset[i].desarrollador=desarrollador;
+        dataset[i].genero=genero;
+        dataset[i].plataforma=plataforma;
+        dataset[i].fecha_sal=salida;
+        dataset[i].ult_update=last;
+        dataset[i].reting=rating;
+        dataset[i].ventas_g=ventas_g;
+        dataset[i].ventas_EEUU=ventas_EEUU;
+        dataset[i].ventas_EU=ventas_EU;
+        dataset[i].ventas_Japon=ventas_Japon;*/
+        i++;
+    }
+
+
 }
