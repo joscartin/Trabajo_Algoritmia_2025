@@ -29,22 +29,21 @@ typedef int Plataforma[11];
 
 
 typedef struct Juego{
-    Consola consola;
-    Publicador publicador;
-    Desarrollador desarrollador;
-    Genero genero;
-    Plataforma plataforma;
-    fecha fecha_sal;
-    fecha ult_update;
-    int rating;
-    int ventas_g;
-    int ventas_EEUU;
-    int ventas_EU;
-    int ventas_Japon;
+    char *consola;
+    char *publicador;
+    char *desarrollador;
+    char *genero;
+    char *plataforma;
+    char *fecha_sal;
+    float rating;
+    float ventas_g;
+    float ventas_EEUU;
+    float ventas_EU;
+    float ventas_Japon;
     bool exitoso;
+    bool eliminar;
 }Juego;
 
-typedef Juego Dataset[];
 
 
 void normalizar (double *datos, int ndatos){
@@ -64,7 +63,7 @@ void normalizar (double *datos, int ndatos){
     }
 }
 
-void set_label(Dataset datas, int n){
+void set_label(Juego datas[], int n){
     for (int i=0;i<n;i++){
         if (datas[i].ventas_g<10000000){
             datas[i].exitoso=false;
@@ -80,34 +79,34 @@ double distancia_juego(Juego a, Juego b) {
     double d; // distancia parcial
 
     // 1 Consola, Publicador, Desarrollador → categóricos (0 o 1)
-    if (a.consola != b.consola)  suma += 1;
-    if (a.publicador != b.publicador)  suma += 1;
-    if (a.desarrollador != b.desarrollador)  suma += 1;
+    if (strcmp(a.consola, b.consola)!=0)  suma += 1;
+    if (strcmp(a.publicador, b.publicador)!=0)  suma += 1;
+    if (strcmp(a.desarrollador, b.desarrollador)!=0)  suma += 1;
 
     // 2 Genero (Hamming)
-    int dif_gen = 0;
+    if (strcmp(a.genero, b.genero)!=0) suma += 1;
+    /*int dif_gen = 0;
     for (int i = 0; i < 7; i++)
         if (a.genero[i] != b.genero[i]) dif_gen++;
     d = (double)dif_gen / 7.0;
     suma += d * d;
-
+*/
     // 3 Plataforma (Hamming)
-    int dif_plat = 0;
+    if (strcmp(a.plataforma, b.plataforma)!=0) suma += 1;
+    /*int dif_plat = 0;
     for (int i = 0; i < 11; i++)
         if (a.plataforma[i] != b.plataforma[i]) dif_plat++;
     d = (double)dif_plat / 11.0;
     suma += d * d;
-
+*/
     // 4 Fechas
+    if (strcmp(a.fecha_sal, b.fecha_sal)!=0)  suma += 1;
+    /*
     int dias_a_sal = a.fecha_sal.año * 365 + a.fecha_sal.mes * 30 + a.fecha_sal.dia;
     int dias_b_sal = b.fecha_sal.año * 365 + b.fecha_sal.mes * 30 + b.fecha_sal.dia;
     d = fabs(dias_a_sal - dias_b_sal);
     suma += d * d;
-
-    int dias_a_upd = a.ult_update.año * 365 + a.ult_update.mes * 30 + a.ult_update.dia;
-    int dias_b_upd = b.ult_update.año * 365 + b.ult_update.mes * 30 + b.ult_update.dia;
-    d = fabs(dias_a_upd - dias_b_upd);
-    suma += d * d;
+    */
 
     // 5 Numéricos
     d = a.rating - b.rating;
@@ -152,7 +151,7 @@ void ordena(int distancias[][2], int size) {
     }
 }
 
-bool knn (Juego datos, Dataset dataset, int n, int k){
+bool knn (Juego datos, Juego dataset[], int n, int k){
     int distancias[n][2];
     int si, no = 0;
     int x;
@@ -182,12 +181,10 @@ bool knn (Juego datos, Dataset dataset, int n, int k){
     return datos.exitoso;
 }
 
-void ENN (Dataset dataset, int n, int k){
+void ENN (Juego dataset[], int n, int k){
     for (int i=0; i<n; i++){        
-        if (knn(dataset[i], dataset, n, k)){
-            for (int j=i+1;j<n;j++){
-                dataset[j-1]=dataset[j];
-            }
+        if (knn(dataset[i], dataset, n, k)!=dataset[i].exitoso){
+            dataset[i].eliminar=true;
         }
     }
 }
@@ -197,41 +194,16 @@ void ENN (Dataset dataset, int n, int k){
 void main(int argc, char **argv){
 	Juego dataset[5000];
 	float ventas_g, ventas_EEUU, ventas_EU, ventas_Japon, rating;
-	char consola, publicador, desarrollador, salida, last, generos, plataformas;
+	char consola[100], publicador[100], desarrollador[100], salida[100], last[100], generos[100], plataformas[100];
     int i=0;
 
 
 	FILE * archivo = fopen(argv[1], "r");
 
-    while(fscanf(archivo, "%s;%s;%s;%f;%f;%f;%f;%s;%s;%f;%s;%s\n", &consola, &publicador, &desarrollador, &ventas_g, &ventas_EEUU, &ventas_EU, &ventas_Japon, &salida, &last, &rating, &generos, &plataformas)!=-1){//como comprobar EOF
-        
-        if (strcmp(&consola, "PS3")==0){
-            dataset[i].consola=0;
-        } else if (strcmp(&consola, "PS4")==0){
-            dataset[i].consola=1;
-        } else if (strcmp(&consola, "PS5")==0){
-            dataset[i].consola=2;
-        } else {
-            dataset[i].consola=3;
-        }
-
-        printf("%d\n", dataset[i].consola);
-
-        /*
-        
-        dataset[i].publicador=publicador;
-        dataset[i].desarrollador=desarrollador;
-        dataset[i].genero=genero;
-        dataset[i].plataforma=plataforma;
-        dataset[i].fecha_sal=salida;
-        dataset[i].ult_update=last;
-        dataset[i].reting=rating;
-        dataset[i].ventas_g=ventas_g;
-        dataset[i].ventas_EEUU=ventas_EEUU;
-        dataset[i].ventas_EU=ventas_EU;
-        dataset[i].ventas_Japon=ventas_Japon;*/
+    while(fscanf(archivo, "%99[^;];%99[^;];%99[^;];%f;%f;%f;%f;%99[^;];%f;%99[^;];%99[^\n]\n", dataset[i].consola, dataset[i].publicador, dataset[i].desarrollador, &(dataset[i].ventas_g), &(dataset[i].ventas_EEUU), &(dataset[i].ventas_EU), &(dataset[i].ventas_Japon), dataset[i].fecha_sal, &(dataset[i].rating), dataset[i].genero, dataset[i].plataforma)!=EOF && i<23){//como comprobar EOF
         i++;
     }
+
 
 
 }
