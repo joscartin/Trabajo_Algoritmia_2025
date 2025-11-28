@@ -1,16 +1,3 @@
-PS3;RockstarGames;RockstarNorth;20320000.0;6370000.0;9850000.0;990000.0;2013-09-17;4.47;Action;PC, PlayStation5, XboxOne, PlayStation4, XboxSeriesS/X, Xbox360, PlayStation3
-PS4;Rockstar Games;Rockstar North;19390000.0;6060000.0;9710000.0;600000.0;2014-11-18;4.47;Action;PC, PlayStation 5, Xbox One, PlayStation 4, Xbox Series S/X, Xbox 360, PlayStation 3
-PS4;Rockstar Games;Rockstar Games;13940000.0;5260000.0;6210000.0;210000.0;2018-10-26;4.59;Action;PC, Xbox One, PlayStation 4
-PS3;Activision;Treyarch;13800000.0;4990000.0;5880000.0;650000.0;2012-11-13;3.96;Shooter, Action;PC, Xbox One, Xbox 360, PlayStation 3, Wii U
-PS4;Activision;Sledgehammer Games;13400000.0;4670000.0;6210000.0;400000.0;2017-11-03;3.54;Shooter, Action;PC, Xbox One, PlayStation 4
-PS3;Activision;Infinity Ward;13350000.0;5540000.0;5780000.0;490000.0;2011-11-08;3.78;Shooter, Action;PC, Xbox One, iOS, macOS, Xbox 360, PlayStation 3, Wii
-PS3;Activision;Treyarch;12670000.0;6010000.0;4400000.0;480000.0;2010-11-09;4.05;Shooter, Action;PC, Xbox One, iOS, Nintendo DS, macOS, Xbox 360, PlayStation 3, Wii
-PS4;EA Sports;EA Vancouver;11800000.0;1270000.0;8640000.0;150000.0;2017-09-29;3.36;Sports;PC, Xbox One, PlayStation 4, Nintendo Switch, Xbox 360
-PS4;Electronic Arts;EA Canada;10940000.0;1260000.0;7950000.0;120000.0;2016-09-27;3.31;Sports;PC, Xbox One, PlayStation 4, Xbox 360, PlayStation 3
-PS3;Activision;Infinity Ward;10610000.0;4990000.0;3660000.0;380000.0;2009-11-10;4.27;Shooter;PC, Xbox One, macOS, Xbox 360, PlayStation 3
-PS3;Rockstar Games;Rockstar North;10570000.0;4790000.0;3730000.0;440000.0;2008-04-29;4.26;Action;PC, Xbox One, Xbox 360, PlayStation 3
-PS3;Activision;Infinity Ward;10130000.0;4110000.000000001;4010000.0;390000.0;2013-11-05;3.15;Shooter, Action;PC, Xbox One, PlayStation 4, Xbox 360, PlayStation 3, Wii U
-PS4;Electronic Arts;EA Sports;9150000.0;840000.0;6870000.0;100000.0;2018-09-28;3.31;Simulation, Sports;PC, Xbox One, PlayStation 4, Nintendo Switch, Xbox 360, PlayStation 3
 PS4;Sony Interactive Entertainment;Insomniac Games;8760000.0;3640000.0;3390000.0;320000.0;2018-09-07;4.45;Action;PC, PlayStation 5, PlayStation 4
 PS4;Activision;Infinity Ward;8480000.0;3110000.0;3830000.0;190000.0;2016-11-04;3.58;Shooter, Action;PC, Xbox One, PlayStation 4
 PS4;Bethesda Softworks;Bethesda Game Studios;8480000.0;2910000.0;3970000.0;270000.0;2015-11-10;3.81;Action, RPG;PC, PlayStation 5, Xbox One, PlayStation 4
@@ -194,7 +181,6 @@ PS3;Electronic Arts;BioWare;1460000.0;650000.0;580000.0;30000.0;2012-03-06;4.4;A
 PS4;Namco Bandai Games;Arc System Works;1460000.0;610000.0;510000.0;120000.0;2018-01-26;4.08;Action, Fighting;PC, Xbox One, PlayStation 4, Nintendo Switch
 PS3;2K Games;2K Boston / 2K Australia / 2K Marin;1440000.0;750000.0;480000.0;10000.0;2008-10-21;4.36;Shooter, Action;PC, macOS, Xbox 360, PlayStation 3
 PS3;Electronic Arts;Visceral Games;1430000.0;730000.0;490000.0;0.0;2011-01-25;4.38;Shooter, Action;PC, Xbox One, Xbox 360, PlayStation 3
-PS4;Ubisoft;Ubisoft San Francisco;1430000.0;620000.0;570000.0;0.0;2017-10-17;4.04;Adventure, RPG;PC, Xbox One, PlayStation 4, Nintendo Switch
 PS3;Electronic Arts;Danger Close Games;1420000.0;490000.0;640000.0;60000.0;2012-10-23;3.07;Shooter, Action;PC, Xbox 360, PlayStation 3
 PS3;THQ;Yuke's Future Media Creators;1420000.0;800000.0;400000.0;20000.0;2010-05-25;3.29;Arcade, Fighting, Sports;Xbox 360, PlayStation 3, PSP
 PS4;Capcom;Capcom;1390000.0;640000.0;420000.0;120000.0;2016-02-16;3.49;Action, Fighting;PC, PlayStation 4
@@ -378,7 +364,6 @@ PS3;Activision;Eurocom;780000.0;330000.0;330000.0;0.0;2011-11-01;3.88;Shooter, A
 PS3;Activision;FreeStyle Games;780000.0;490000.0;190000.0;0.0;2010-10-19;4.15;Arcade;PlayStation 3, Wii
 PS3;2K Games;Firaxis Games;780000.0;490000.0;190000.0;10000.0;2008-07-08;3.55;Strategy, Simulation;Xbox One, iOS, Android, Nintendo DS, Xbox 360, PlayStation 3
 PS4;Codemasters;Codemasters;780000.0;70000.0;560000.0;30000.0;2017-01-01;3.78;Racing, Sports;PC, Xbox One, PlayStation 4, iOS, Android, macOS
-PS3;Activision;Radical Entertainment;770000.0;380000.0;280000.0;0.0;2012-04-24;3.79;Adventure, Action;PC, Xbox One, PlayStation 4, Xbox 360, PlayStation 3
 PS3;Atlus;Arc System Works;770000.0;320000.0;120000.0;240000.0;2012-08-07;3.84;Fighting;Xbox 360, PlayStation 3
 PS3;Namco Bandai;Spike;770000.0;370000.0;190000.0;110000.0;2009-11-10;3.26;Fighting;Xbox 360, PlayStation 3
 PS4;Konami Digital Entertainment;PES Productions;760000.0;90000.0;450000.0;120000.0;2014-11-11;3.41;Sports;PC, Xbox One, PlayStation 4, Xbox 360, PlayStation 3
@@ -562,7 +547,6 @@ PS3;Ubisoft;Ubisoft;450000.0;260000.0;110000.0;0.0;2012-10-09;3.93;Arcade;Xbox 3
 PS3;Activision;Neversoft Entertainment;440000.0;360000.0;50000.0;0.0;2007-10-15;3.54;Sports;Nintendo DS, Xbox 360, PlayStation 3, PlayStation 2, Wii
 PS3;Konami Digital Entertainment;PES Productions;440000.0;110000.0;120000.0;160000.0;2015-09-15;3.47;Sports;PC, PlayStation 4, Xbox 360, PlayStation 3
 PS3;NIS America;Compile Heart;440000.0;220000.0;100000.0;70000.0;2011-02-15;2.14;RPG;PlayStation 3
-PS3;LucasArts;Krome Studios;440000.0;190000.0;180000.0;0.0;2009-10-06;2.88;Adventure, Action;PC, Nintendo DS, Xbox 360, PlayStation 3, PlayStation 2, PSP, Wii
 PS3;Activision;Beenox Studios;440000.0;260000.0;130000.0;0.0;2010-09-07;3.89;Action;PC, Nintendo DS, Xbox 360, PlayStation 3, Wii
 PS3;Deep Silver;4a-games;440000.0;140000.0;210000.0;30000.0;2013-05-14;4.12;Shooter, Action;PC, Xbox 360, PlayStation 3
 PS4;Activision;Unknown;440000.0;230000.0;140000.0;0.0;2013-11-15;3.48;Platformer, Adventure, Action;PlayStation 4, Xbox One, Nintendo 3DS, Xbox 360, PlayStation 3, Wii U, Wii
@@ -723,7 +707,6 @@ PS3;Activision;Heavy Iron Studios;270000.0;120000.0;110000.0;0.0;2012-11-20;2.97
 PS3;Electronic Arts;Grasshopper Manufacture;270000.0;110000.0;90000.0;40000.0;2011-06-21;3.91;Shooter, Action;Xbox 360, PlayStation 3
 PS3;Konami Digital Entertainment;PES Productions;270000.0;40000.0;120000.0;80000.0;2016-09-13;3.71;Simulation, Sports;PC, Xbox One, PlayStation 4, Xbox 360, PlayStation 3
 PS4;Tripwire Interactive;Tripwire Interactive;270000.0;190000.0;30000.0;0.0;2016-01-01;3.53;Action;PC, Xbox One, PlayStation 4
-PS3;2K Games;2K Marin;270000.0;80000.0;140000.0;0.0;2013-08-20;3.05;Shooter, Action;PC, macOS, Xbox 360, PlayStation 3
 PS3;Sony Computer Entertainment America;SCE Japan Studio;270000.0;110000.0;90000.0;20000.0;2013-09-10;3.7;Platformer, Action;PlayStation 3
 PS3;Namco Bandai Games;Bandai;260000.0;0.0;0.0;260000.0;2013-06-27;0.0;Action;PlayStation 3, PS Vita
 PS3;Ubisoft;Ubisoft;260000.0;60000.0;150000.0;0.0;2011-12-06;3.73;Arcade, Family, Adventure, Action;PC, iOS, Android, Nintendo 3DS, Xbox 360, PlayStation 3, Wii
@@ -747,7 +730,6 @@ PS3;Atari;Starbreeze Studios AB;250000.0;120000.0;90000.0;0.0;2009-04-07;3.95;Sh
 PS3;THQ;Juice Games;250000.0;180000.0;40000.0;10000.0;2007-10-22;3.23;Racing, Arcade;PC, Nintendo DS, PlayStation 3, PlayStation 2
 PS3;Deep Silver;ZootFly;250000.0;50000.0;160000.0;0.0;2010-03-30;2.57;Platformer, Action, Fighting;PC, Xbox 360, PlayStation 3
 PS3;EA Sports;EA Tiburon;250000.0;220000.0;10000.0;0.0;2008-06-10;0.0;Sports;Xbox 360, PlayStation 3, PlayStation 2
-PS4;NIS America;Spike Chunsoft;250000.0;90000.0;50000.0;70000.0;2017-09-26;4.27;Puzzle;PC, PlayStation 4, Nintendo Switch, PS Vita
 PS3;Activision;WayForward Technologies;250000.0;110000.0;90000.0;0.0;2014-10-28;0.0;Arcade;Xbox 360, PlayStation 3
 PS3;Activision;Virtuos;250000.0;210000.0;20000.0;0.0;2010-11-09;0.0;Racing, Arcade;PlayStation 3
 PS4;Milestone S.r.l.;Milestone S.r.l.;240000.0;40000.0;130000.0;30000.0;2015-06-23;3.0;Racing, Simulation, Sports;PC, Xbox One, PlayStation 4, Xbox 360, PlayStation 3
@@ -931,7 +913,6 @@ PS3;Namco Bandai Games;From Software;150000.0;0.0;0.0;150000.0;2012-03-08;0.0;Ac
 PS4;Namco Bandai Games;B.B. Studio;150000.0;0.0;0.0;150000.0;2017-02-23;0.0;Strategy;PC, PlayStation 4, Nintendo Switch, PS Vita
 PS4;NIS America;5pb. Inc.;150000.0;100000.0;20000.0;0.0;2016-09-13;2.63;Adventure;PC, Xbox One, PlayStation 4, PS Vita
 PS4;Dusenberry Martin Racing;Monster Games;150000.0;120000.0;0.0;0.0;2016-09-13;0.0;Racing;PC, Xbox One, PlayStation 4
-PS4;Insomniac Games;Insomniac Games;150000.0;120000.0;0.0;0.0;2016-07-12;3.37;Adventure, Action;PC, Xbox One, PlayStation 4
 PS3;Sony Computer Entertainment;Team Ramrod;150000.0;130000.0;0.0;0.0;2010-09-21;3.0;Arcade, Simulation, Sports;PlayStation 3
 PS3;Sega;Liquid Entertainment;150000.0;70000.0;60000.0;0.0;2011-05-03;2.67;Adventure, Action;Nintendo 3DS, Nintendo DS, Xbox 360, PlayStation 3, Wii
 PS4;Tecmo Koei;Omega Force;150000.0;40000.0;0.0;100000.0;2017-03-21;3.42;Action;PC, PlayStation 4, PlayStation 3, PS Vita
@@ -1112,11 +1093,9 @@ PS3;Atlus;Lancarse;80000.0;60000.0;10000.0;0.0;2015-07-28;3.75;Strategy, RPG;PC,
 PS3;Koch Media;Dark Energy Digital;80000.0;0.0;70000.0;0.0;2011-04-15;0.0;Sports;PlayStation 3
 PS3;Activision;Now Production;80000.0;70000.0;0.0;0.0;2010-07-20;0.0;Arcade, Sports;PlayStation 3
 PS3;Namco Bandai;Game Republic;80000.0;40000.0;30000.0;0.0;2011-02-22;2.67;Adventure, Action;Xbox 360, PlayStation 3
-PS4;Focus Home Interactive;Saber Interactive;80000.0;70000.0;0.0;0.0;2018-10-23;3.67;Racing, Simulation;PC, Xbox One, PlayStation 4, Nintendo Switch
 PS3;Namco Bandai Games;ArtDink;80000.0;0.0;0.0;80000.0;2013-09-12;0.0;Adventure;PlayStation 3, PS Vita, PSP
 PS4;2K Games;Saber Interactive;80000.0;60000.0;0.0;0.0;2018-10-16;3.04;Sports;PC, Xbox One, PlayStation 4, Nintendo Switch
 PS3;Eidos Interactive;Rebellion Developments;80000.0;40000.0;30000.0;0.0;2009-02-24;2.56;Shooter, Adventure, Action;PC, Xbox 360, PlayStation 3
-PS3;Activision;Activision;80000.0;70000.0;0.0;0.0;2010-10-26;0.0;Racing, Shooter, Arcade;Xbox 360, PlayStation 3
 PS4;Arc System Works;Arc System Works;80000.0;40000.0;0.0;30000.0;2018-06-05;3.58;Action, Fighting;PC, PlayStation 4, Nintendo Switch
 PS3;Crave Entertainment;Double Tap;80000.0;80000.0;0.0;0.0;2010-11-29;0.0;Arcade, Simulation;PlayStation 3
 PS3;Namco Bandai Games;Unknown;80000.0;0.0;0.0;80000.0;2016-06-30;0.0;Strategy, Action;PlayStation 4, PlayStation 3
@@ -1300,7 +1279,6 @@ PS4;Modus Games;The Balance Inc;30000.0;20000.0;0.0;0.0;2018-12-04;2.75;Indie, A
 PS4;THQ Nordic;KING Art Games;30000.0;30000.0;0.0;0.0;2016-12-01;3.12;RPG;PC, Xbox One, PlayStation 4, macOS, Linux
 PS4;Soedesco;Flying Carpets Games;30000.0;20000.0;0.0;0.0;2017-09-29;3.12;Indie, Adventure, Action, RPG;PC, PlayStation 4, macOS, Linux, Wii U
 PS4;Rising Star Games;Chime;30000.0;20000.0;0.0;0.0;2017-08-18;4.1;Adventure;PC, Xbox One, PlayStation 4, Nintendo 3DS, PS Vita
-PS4;NIS America;Crim;30000.0;10000.0;0.0;10000.0;2018-06-19;3.67;RPG;PlayStation 4, Nintendo Switch
 PS4;Activision;Behaviour Interactive;30000.0;0.0;30000.0;0.0;2015-11-03;0.0;Platformer;Xbox One, PlayStation 4, Nintendo 3DS, Xbox 360, Wii U
 PS4;THQ Nordic;KING Art Games;30000.0;30000.0;0.0;0.0;2018-03-13;3.2;Adventure;PC, Xbox One, PlayStation 4, Nintendo Switch, macOS, Linux
 PS4;Wired Productions;LKA;30000.0;20000.0;0.0;0.0;2017-03-24;2.9;Indie, Adventure;PC, Xbox One, PlayStation 4, Nintendo Switch
@@ -1484,7 +1462,6 @@ PS4;Devolver Digital;Acid Nerve;0.0;0.0;0.0;0.0;2015-04-14;3.34;Indie, Action;PC
 PS4;HumaNature Studios;HumaNature Studios;0.0;0.0;0.0;0.0;2019-03-01;3.53;Platformer, Adventure;PC, Xbox One, PlayStation 4, Nintendo Switch
 PS4;SNK Playmore;Trigger Apps;0.0;0.0;0.0;0.0;2016-05-03;3.66;Arcade, Action, Fighting;PC, Xbox One, PlayStation 4, Nintendo Switch, macOS, Linux, PlayStation 2, Classic Macintosh, Dreamcast, Neo Geo
 PS4;Thekla, Inc.;Unknown;0.0;0.0;0.0;0.0;2016-01-26;4.01;Indie, Adventure, Puzzle;PC, Xbox One, PlayStation 4, iOS, Android, macOS
-PS4;Iridium;Unknown;0.0;0.0;0.0;0.0;2015-02-24;2.58;Strategy, Indie;PC, PlayStation 4
 PS4;Atomicom;Unknown;0.0;0.0;0.0;0.0;2015-01-01;2.36;Racing, Indie, Action;PC, PlayStation 4, macOS, Linux, PS Vita
 PS4;Focus Home Interactive;Enigami SAS;0.0;0.0;0.0;0.0;2017-04-18;2.56;Indie, Adventure, Action, RPG;PC, Xbox One, PlayStation 4
 PS4;Sierra Entertainment;Rock Pocket Ltd;0.0;0.0;0.0;0.0;2015-03-03;2.0;Adventure, Action;PC, Xbox One, PlayStation 4, Wii U
@@ -1668,7 +1645,6 @@ PS3;Cellar Door Games;Cellar Door Games;0.0;0.0;0.0;0.0;2014-07-29;3.87;Platform
 PS3;5pb;Unknown;0.0;0.0;0.0;0.0;2014-01-30;0.0;Adventure;PlayStation 3, PS Vita
 PS3;Tru Blu Entertainment;Unknown;0.0;0.0;0.0;0.0;2012-10-09;0.0;Sports;PlayStation 3
 PS3;Unknown;Unknown;0.0;0.0;0.0;0.0;2014-05-06;2.9;Indie, Arcade, Sports;PC, PlayStation 4, macOS, Linux, PlayStation 3
-PS3;D3Publisher;Unknown;0.0;0.0;0.0;0.0;2013-09-10;2.97;Indie, Shooter, Strategy, Action;PC, macOS, Linux, Xbox 360, PlayStation 3
 PS3;Square Enix;TikGames;0.0;0.0;0.0;0.0;2012-01-24;2.88;Platformer, Arcade, Action;PC, Xbox 360, PlayStation 3
 PS3;Activision;Behaviour Interactive;0.0;0.0;0.0;0.0;2013-10-22;3.18;Platformer, Shooter, Adventure, Action;Nintendo 3DS, Nintendo DS, Xbox 360, PlayStation 3, Wii U, Wii
 PS3;Sony Computer Entertainment;SCEA San Diego Studio / Zindagi Games;0.0;0.0;0.0;0.0;2012-10-30;3.27;Casual, Arcade, Sports;PlayStation 3
@@ -1848,12 +1824,10 @@ PS3;VooFoo Studios;Unknown;0.0;0.0;0.0;0.0;2014-04-15;2.0;Casual, Board Games;PC
 PS3;Sony Computer Entertainment;SCEE London Studio;0.0;0.0;0.0;0.0;2013-11-12;0.0;Adventure;PlayStation 3
 PS3;Disney Interactive Studios;Unknown;0.0;0.0;0.0;0.0;2012-06-19;0.0;Arcade, Action;PC, Nintendo DS, Xbox 360, PlayStation 3, Wii
 PS3;Beatshapers;Unknown;0.0;0.0;0.0;0.0;2012-10-16;2.6;Arcade, Puzzle;PlayStation 3, PS Vita, PSP
-PS3;505 Games;Starbreeze Studios;0.0;0.0;0.0;0.0;2013-09-03;4.18;Indie, Adventure, Action;PC, PlayStation 4, Xbox One, Nintendo Switch, iOS, Android, Xbox 360, PlayStation 3
 PS3;Ubisoft;Techland;0.0;0.0;0.0;0.0;2013-05-22;3.8;Shooter, Action;PC, Xbox One, Nintendo Switch, Xbox 360, PlayStation 3
 PS3;Konami Digital Entertainment;Mercury Steam;0.0;0.0;0.0;0.0;2013-10-31;3.72;Platformer, Adventure, Action;PC, Xbox One, Nintendo 3DS, Xbox 360, PlayStation 3
 PS3;Ubisoft;Ubisoft Montreal;0.0;0.0;0.0;0.0;2014-04-30;3.85;Indie, RPG;PC, Xbox One, PlayStation 4, Nintendo Switch, Xbox 360, PlayStation 3, PS Vita, Wii U
 PS3;Activision;Torn Banner Studios;0.0;0.0;0.0;0.0;2014-12-03;3.41;Indie, Action;PC, PlayStation 4, Xbox One, macOS, Linux, Xbox 360, PlayStation 3
-PS3;Ubisoft;Unknown;0.0;0.0;0.0;0.0;2013-07-30;3.22;Platformer, Indie;PC, Xbox 360, PlayStation 3, Wii U
 PS3;Unknown;Unknown;0.0;0.0;0.0;0.0;2020-12-31;2.61;Adventure, Action, RPG;PC, Xbox One, Xbox 360, PlayStation 3
 PS3;Cloud Imperium Games Corporation;Unknown;0.0;0.0;0.0;0.0;2012-09-30;0.0;Arcade, Fighting, Sports;Xbox 360, PlayStation 3
 PS3;D3Publisher;Unknown;0.0;0.0;0.0;0.0;2012-11-03;3.47;Family, Action;Nintendo 3DS, Nintendo DS, Xbox 360, PlayStation 3, Wii U, Wii
@@ -2037,7 +2011,6 @@ PS4;Sony Interactive Entertainment;SIE San Diego Studio;0.0;0.0;0.0;0.0;2016-07-
 PS4;Messhof;Code Mystics;0.0;0.0;0.0;0.0;2014-10-14;4.01;Indie, Action, Sports;PC, PlayStation 4, macOS, PS Vita
 PS4;Finji;Infinite Fall;0.0;0.0;0.0;0.0;2017-02-21;4.25;Adventure;PC, Xbox One, PlayStation 4, Nintendo Switch, iOS, macOS, Linux
 PS4;Sony Interactive Entertainment;Team Ninja;0.0;0.0;0.0;0.0;2020-03-13;3.99;Action;PC, PlayStation 5, PlayStation 4
-PS4;Smilegate Megaport;Unknown;0.0;0.0;0.0;0.0;2016-09-06;0.0;Strategy, RPG;PlayStation 4
 PS4;Sony Interactive Entertainment;Double Fine Productions;0.0;0.0;0.0;0.0;2017-06-13;3.88;Adventure;PC, PlayStation 4
 PS4;Unknown;Unknown;0.0;0.0;0.0;0.0;2014-04-15;3.78;Board Games;PlayStation 4, Nintendo 3DS, PlayStation 3, Wii U
 PS4;Triniti Interactive;Unknown;0.0;0.0;0.0;0.0;2014-12-05;3.21;Casual, Simulation, Sports;PC, Xbox One, PlayStation 4, Nintendo Switch

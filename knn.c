@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <math.h>
 #include <string.h>
+#include <stdlib.h>
 
 typedef struct fecha{
     int dia;
@@ -46,7 +47,7 @@ typedef struct Juego{
 
 
 
-void normalizar (double *datos, int ndatos){
+void normalizar (float *datos, int ndatos){
     int i;
     float maximo, minimo;
     maximo=datos[0];
@@ -65,7 +66,7 @@ void normalizar (double *datos, int ndatos){
 
 void set_label(Juego datas[], int n){
     for (int i=0;i<n;i++){
-        if (datas[i].ventas_g<10000000){
+        if (datas[i].ventas_g<0.75){
             datas[i].exitoso=false;
         } else {
             datas[i].exitoso=true;
@@ -151,20 +152,20 @@ void ordena(int distancias[][2], int size) {
     }
 }
 
-bool knn (Juego datos, Juego dataset[], int n, int k){
+bool knn (Juego datos, Juego dataset[], int n, int k, int y){
     int distancias[n][2];
     int si, no = 0;
     int x;
 
-    for (int i=0;i<n;i++){//calculo distancias
+    for (int i=y;i<n;i++){//calculo distancias
         distancias[i][0]=distancia_juego(datos, dataset[i]);
         distancias[i][1]=i;
     }
 
     ordena(distancias, n);//ordeno distancias
 
-    for (int j=0;j<k;j++){//calculo meida etiquetas de las k primeras distancias
-        if (dataset[distancias[0][1]].exitoso){
+    for (int j=0;j<k;j++){//calculo meidas etiquetas de las k primeras distancias
+        if (dataset[distancias[j][1]].exitoso){
             si++;
         } else {
             no++;
@@ -182,28 +183,74 @@ bool knn (Juego datos, Juego dataset[], int n, int k){
 }
 
 void ENN (Juego dataset[], int n, int k){
-    for (int i=0; i<n; i++){        
-        if (knn(dataset[i], dataset, n, k)!=dataset[i].exitoso){
+    for (int i=0; i<n; i++){
+        if (knn(dataset[i], dataset, n, k, 0)!=dataset[i].exitoso){
             dataset[i].eliminar=true;
+            printf("%d--", i+1);
         }
     }
+    printf("fin\n");
 }
 
 
 
 void main(int argc, char **argv){
-	Juego dataset[5000];
-	float ventas_g, ventas_EEUU, ventas_EU, ventas_Japon, rating;
+	Juego dataset[2218];
+	float ventas_g, ventas_EEUU, ventas_EU, ventas_Japon, rating, ventas_gs[2191], ventas_EEUUs[2191], ventas_EUs[2191], ventas_Japons[2191], ratings[2191];
 	char consola[100], publicador[100], desarrollador[100], salida[100], last[100], generos[100], plataformas[100];
     int i=0;
+    int aciertos;
+    int predicciones[2191];
 
 
 	FILE * archivo = fopen(argv[1], "r");
 
-    while(fscanf(archivo, "%99[^;];%99[^;];%99[^;];%f;%f;%f;%f;%99[^;];%f;%99[^;];%99[^\n]\n", dataset[i].consola, dataset[i].publicador, dataset[i].desarrollador, &(dataset[i].ventas_g), &(dataset[i].ventas_EEUU), &(dataset[i].ventas_EU), &(dataset[i].ventas_Japon), dataset[i].fecha_sal, &(dataset[i].rating), dataset[i].genero, dataset[i].plataforma)!=EOF && i<23){//como comprobar EOF
+    while(fscanf(archivo, "%99[^;];%99[^;];%99[^;];%f;%f;%f;%f;%99[^;];%f;%99[^;];%99[^\n]\n", consola, publicador, desarrollador, &(ventas_g), &(ventas_EEUU), &(ventas_EU), &(ventas_Japon), salida, &(rating), generos, plataformas)!=EOF && i<2191){//como comprobar EOF
+        
+        ventas_gs[i]=ventas_g;
+        ventas_EEUUs[i]=ventas_EEUU;
+        ventas_EUs[i]=ventas_EU;
+        ventas_Japons[i]=ventas_Japon;
+        ratings[i]=rating; 
+
+        
+        
+        dataset[i].consola=consola;
+        dataset[i].publicador=publicador;
+        dataset[i].desarrollador=desarrollador;
+        dataset[i].fecha_sal=salida;
+        dataset[i].genero=generos;
+        dataset[i].plataforma=plataformas;
+
+
+        //printf("consola: %s\npublicador: %s\ndesarrollador: %s\nventas: %f-%f-%f-%f\nsalida: %s\nrating%f\ngeneros: %s\nplataformas: %s\n%d\n", dataset[i].consola, dataset[i].publicador, dataset[i].desarrollador, (dataset[i].ventas_g), (dataset[i].ventas_EEUU), (dataset[i].ventas_EU), (dataset[i].ventas_Japon), dataset[i].fecha_sal, (dataset[i].rating), dataset[i].genero, dataset[i].plataforma, i);
         i++;
     }
+    normalizar(ventas_gs, 2191);
+    normalizar(ventas_EEUUs, 2191);
+    normalizar(ventas_EUs, 2191);
+    normalizar(ventas_Japons, 2191);
+    normalizar(ratings, 2191);
+    
+    /*for (int i=0;i<2191; i++){
+        printf("%f--%f--%f--%f--%f\n", ventas_gs[i], ventas_EEUUs[i], ventas_EUs[i], ventas_Japons[i], ratings[i]);
+    }*/
 
+    set_label(dataset, 2191);
+    //ENN(dataset, 2191, 2191);//aplicar ENN (ya hecho)
+
+    for (int i=0; i<=atoi(argv[2]); i++){
+        aciertos=0;
+        for (int j=0; j<548; j++){//sale todo el rato si, revisar parametros set_label??
+            predicciones[j]=knn(dataset[j], dataset, 2191, i, 548);
+        }
+        for (int j=0; j<548; j++){
+            if (predicciones[i]==dataset[i].exitoso){
+                aciertos++;
+            }
+        }
+        printf("proporción aciertos: %d, k=%d\n", aciertos/548, i);
+    }
 
 
 }
