@@ -66,7 +66,7 @@ void normalizar (float *datos, int ndatos){
 
 void set_label(Juego datas[], int n){
     for (int i=0;i<n;i++){
-        if (datas[i].ventas_g<0.75){
+        if (datas[i].ventas_g<0.5){
             datas[i].exitoso=false;
         } else {
             datas[i].exitoso=true;
@@ -129,22 +129,22 @@ double distancia_juego(Juego a, Juego b) {
     return sqrtf(suma);
 }
 
-void ordena(int distancias[][2], int size) {
+void ordena(double *(distancias[][2]), int size) {
     bool intercambios = true;
     int numPasada = size - 1;
-    int temp[2];  // Para almacenar temporalmente una fila (par de números)
+    double temp[2];  // Para almacenar temporalmente una fila (par de números)
     
     while (numPasada > 0 && intercambios) {
         intercambios = false;
         for (int i = 0; i < numPasada; i++) {
             // Comparamos solo el primer valor de cada fila (distancias[i][0])
-            if (distancias[i][0] > distancias[i + 1][0]) {
+            if (*distancias[i][0] > *distancias[i + 1][0]) {
                 intercambios = true;
                 // Intercambiamos las filas completas (todas las columnas de la fila)
                 for (int j = 0; j < 2; j++) {
-                    temp[j] = distancias[i][j];
-                    distancias[i][j] = distancias[i + 1][j];
-                    distancias[i + 1][j] = temp[j];
+                    temp[j] = *distancias[i][j];
+                    *distancias[i][j] = *distancias[i + 1][j];
+                    *distancias[i + 1][j] = temp[j];
                 }
             }
         }
@@ -153,7 +153,7 @@ void ordena(int distancias[][2], int size) {
 }
 
 bool knn (Juego datos, Juego dataset[], int n, int k, int y){
-    int distancias[n][2];
+    double distancias[n][2];
     int si, no = 0;
     int x;
 
@@ -162,22 +162,27 @@ bool knn (Juego datos, Juego dataset[], int n, int k, int y){
         distancias[i][1]=i;
     }
 
-    ordena(distancias, n);//ordeno distancias
+    ordena(&(distancias), n);//ordeno distancias
+    /*for (int i=0; i<20; i++){
+        printf("distancia %d: %f; pos: %f\n", i, distancias[i][0], distancias[i][1]);
+    }*/
 
     for (int j=0;j<k;j++){//calculo meidas etiquetas de las k primeras distancias
-        if (dataset[distancias[j][1]].exitoso){
+        if (dataset[(int)distancias[j][1]].exitoso){
             si++;
         } else {
             no++;
         }
     }
 
+    printf("si: %d, no: %d\n", si, no);
+
     if (si>no){//calculo etiquetas datos
         datos.exitoso=true;
     } else if (si<no){
         datos.exitoso=false;
     } else {
-        datos.exitoso=dataset[distancias[0][1]].exitoso;
+        datos.exitoso=dataset[(int)distancias[0][1]].exitoso;
     }
     return datos.exitoso;
 }
@@ -200,7 +205,7 @@ void main(int argc, char **argv){
 	char consola[100], publicador[100], desarrollador[100], salida[100], last[100], generos[100], plataformas[100];
     int i=0;
     int aciertos;
-    int predicciones[2191];
+    bool predicciones[2191];
 
 
 	FILE * archivo = fopen(argv[1], "r");
@@ -232,25 +237,32 @@ void main(int argc, char **argv){
     normalizar(ventas_Japons, 2191);
     normalizar(ratings, 2191);
     
-    /*for (int i=0;i<2191; i++){
-        printf("%f--%f--%f--%f--%f\n", ventas_gs[i], ventas_EEUUs[i], ventas_EUs[i], ventas_Japons[i], ratings[i]);
-    }*/
+    
+
+    for (int i=0; i < 2191; i++){
+        dataset[i].ventas_EEUU=ventas_EEUUs[i];
+        dataset[i].ventas_g=ventas_gs[i];
+        dataset[i].ventas_EU=ventas_EUs[i];
+        dataset[i].ventas_Japon=ventas_Japons[i];
+        dataset[i].rating=ratings[i];
+    }
 
     set_label(dataset, 2191);
+    knn(dataset[0], dataset, 2191, 20, 548);
+
     //ENN(dataset, 2191, 2191);//aplicar ENN (ya hecho)
 
-    for (int i=0; i<=atoi(argv[2]); i++){
+    /*for (int i=0; i<=atoi(argv[2]); i++){
         aciertos=0;
-        for (int j=0; j<548; j++){//sale todo el rato si, revisar parametros set_label??
-            predicciones[j]=knn(dataset[j], dataset, 2191, i, 548);
+        for (int j=0; j<548; j++){
+            predicciones[j]=knn(dataset[j], dataset, 2191, i, 548);//knn devuelve todo el rato 1-->error!!!!!!!
         }
         for (int j=0; j<548; j++){
-            if (predicciones[i]==dataset[i].exitoso){
+            if (predicciones[j]==dataset[j].exitoso){
                 aciertos++;
             }
         }
         printf("proporción aciertos: %d, k=%d\n", aciertos/548, i);
-    }
-
+    }*/
 
 }
