@@ -129,7 +129,7 @@ double distancia_juego(Juego a, Juego b) {
     return sqrtf(suma);
 }
 
-void ordena(double *(distancias[][2]), int size) {
+void ordena(double distancias[][2], int size) {
     bool intercambios = true;
     int numPasada = size - 1;
     double temp[2];  // Para almacenar temporalmente una fila (par de números)
@@ -138,13 +138,13 @@ void ordena(double *(distancias[][2]), int size) {
         intercambios = false;
         for (int i = 0; i < numPasada; i++) {
             // Comparamos solo el primer valor de cada fila (distancias[i][0])
-            if (*distancias[i][0] > *distancias[i + 1][0]) {
+            if (distancias[i][0] > distancias[i + 1][0]) {
                 intercambios = true;
                 // Intercambiamos las filas completas (todas las columnas de la fila)
                 for (int j = 0; j < 2; j++) {
-                    temp[j] = *distancias[i][j];
-                    *distancias[i][j] = *distancias[i + 1][j];
-                    *distancias[i + 1][j] = temp[j];
+                    temp[j] = distancias[i][j];
+                    distancias[i][j] = distancias[i + 1][j];
+                    distancias[i + 1][j] = temp[j];
                 }
             }
         }
@@ -155,19 +155,15 @@ void ordena(double *(distancias[][2]), int size) {
 bool knn (Juego datos, Juego dataset[], int n, int k, int y){
     double distancias[n][2];
     int si, no = 0;
-    int x;
-
-    for (int i=y;i<n;i++){//calculo distancias
-        distancias[i][0]=distancia_juego(datos, dataset[i]);
+    for (int i=0;i<n-y;i++){//calculo distancias
+        distancias[i][0]=distancia_juego(datos, dataset[i+y]);
         distancias[i][1]=i;
     }
 
-    ordena(&(distancias), n);//ordeno distancias
-    /*for (int i=0; i<20; i++){
-        printf("distancia %d: %f; pos: %f\n", i, distancias[i][0], distancias[i][1]);
-    }*/
+    ordena(distancias, n-y);//ordeno distancias
 
     for (int j=0;j<k;j++){//calculo meidas etiquetas de las k primeras distancias
+        printf("exito: %d, posición: %f\n", dataset[(int)distancias[j][1]].exitoso, distancias[j][1]);
         if (dataset[(int)distancias[j][1]].exitoso){
             si++;
         } else {
@@ -175,7 +171,6 @@ bool knn (Juego datos, Juego dataset[], int n, int k, int y){
         }
     }
 
-    printf("si: %d, no: %d\n", si, no);
 
     if (si>no){//calculo etiquetas datos
         datos.exitoso=true;
@@ -204,7 +199,7 @@ void main(int argc, char **argv){
 	float ventas_g, ventas_EEUU, ventas_EU, ventas_Japon, rating, ventas_gs[2191], ventas_EEUUs[2191], ventas_EUs[2191], ventas_Japons[2191], ratings[2191];
 	char consola[100], publicador[100], desarrollador[100], salida[100], last[100], generos[100], plataformas[100];
     int i=0;
-    int aciertos;
+    double aciertos;
     bool predicciones[2191];
 
 
@@ -228,7 +223,6 @@ void main(int argc, char **argv){
         dataset[i].plataforma=plataformas;
 
 
-        //printf("consola: %s\npublicador: %s\ndesarrollador: %s\nventas: %f-%f-%f-%f\nsalida: %s\nrating%f\ngeneros: %s\nplataformas: %s\n%d\n", dataset[i].consola, dataset[i].publicador, dataset[i].desarrollador, (dataset[i].ventas_g), (dataset[i].ventas_EEUU), (dataset[i].ventas_EU), (dataset[i].ventas_Japon), dataset[i].fecha_sal, (dataset[i].rating), dataset[i].genero, dataset[i].plataforma, i);
         i++;
     }
     normalizar(ventas_gs, 2191);
@@ -248,21 +242,20 @@ void main(int argc, char **argv){
     }
 
     set_label(dataset, 2191);
-    knn(dataset[0], dataset, 2191, 20, 548);
 
     //ENN(dataset, 2191, 2191);//aplicar ENN (ya hecho)
 
-    /*for (int i=0; i<=atoi(argv[2]); i++){
+    for (int i=0; i<=atoi(argv[2]); i++){
         aciertos=0;
         for (int j=0; j<548; j++){
-            predicciones[j]=knn(dataset[j], dataset, 2191, i, 548);//knn devuelve todo el rato 1-->error!!!!!!!
+            predicciones[j]=knn(dataset[j], dataset, 2191, i, 548);
         }
         for (int j=0; j<548; j++){
             if (predicciones[j]==dataset[j].exitoso){
                 aciertos++;
             }
         }
-        printf("proporción aciertos: %d, k=%d\n", aciertos/548, i);
-    }*/
+        printf("proporción aciertos: %f, k=%d\n", aciertos/548, i);
+    }
 
 }
