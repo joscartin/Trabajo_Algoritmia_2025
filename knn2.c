@@ -70,14 +70,14 @@ double distancia_juego(Juego a, Juego b) {
     double d; // distancia parcial
 
     // 1 Consola, Publicador, Desarrollador → categóricos (0 o 1)
-    if (strcmp(a.consola, b.consola)!=0)  suma += 1;
-    if (strcmp(a.publicador, b.publicador)!=0)  suma += 1;
-    if (strcmp(a.desarrollador, b.desarrollador)!=0)  suma += 1;
+    if (a.consola!=b.consola)  suma += 1;
+    if (a.publicador!=b.publicador)  suma += 1;
+    if (a.desarrollador!=b.desarrollador)  suma += 1;
 
     // 2 Genero (Hamming)
-    if (strcmp(a.genero, b.genero)!=0) suma += 1;
+    if (a.genero!=b.genero) suma += 1;
     // 3 Plataforma (Hamming)
-    if (strcmp(a.plataforma, b.plataforma)!=0) suma += 1;
+    if (a.plataforma!=b.plataforma) suma += 1;
     // 4 Fechas
     if (a.fecha_sal!=b.fecha_sal){
         suma+=(a.fecha_sal-b.fecha_sal)*(a.fecha_sal-b.fecha_sal);
@@ -103,44 +103,43 @@ double distancia_juego(Juego a, Juego b) {
     return sqrtf(suma);
 }
 
-bool knn (Juego datos[], Juego dataset[], bool exitos[], int n, int k, int y){
+bool knn (Juego datos, Juego dataset[], bool exitos[], int n, int k, int y){
     double distancia;
     int si, no, pos, posmin;
     si=0;
     no=0;
     tipolistaord l;
     nuevo(&l);
-    for (int j=0; j<y; j++){
-        for (int i=0;i<n;i++){//calculo distancias
-            distancia=distancia_juego(datos[j], dataset[i]);
-            insertar(&l, distancia, i);
+    for (int i=0;i<n;i++){//calculo distancias
+        distancia=distancia_juego(datos, dataset[i]);
+        insertar(&l, distancia, i+y);
+    }
+    for (int j=0;j<k;j++){//calculo meidas etiquetas de las k primeras distancias
+        primero(l, &distancia, &pos);
+        eliminar(&l, distancia, pos);
+        if (j==0){
+            posmin=pos;
         }
-
-        for (int j=0;j<k;j++){//calculo meidas etiquetas de las k primeras distancias
-            primero(l, &distancia, &pos);
-            eliminar(&l, distancia, pos);
-            if (j==0){
-                posmin=pos;
-            }
-            if (dataset[pos].exitoso){
-                si++;
-            } else {
-                no++;
-            }
-        }
-
-
-        if (si>no){//calculo etiquetas datos
-            exitos[j]=true;
-        } else if (si<no){
-            exitos[j]=false;
+        if (dataset[pos].exitoso){
+            si++;
         } else {
-            exitos[j]=dataset[posmin].exitoso;
+            no++;
         }
     }
-    //destruir(&l);
+    destruir(&l);
+    free(l);
 
+
+    if (si>no){//calculo etiquetas datos
+        return true;
+    } else if (si<no){
+        return false;
+    } else {
+    return dataset[posmin].exitoso;
+    }
 }
+
+
 /*
 void ENN (Juego dataset[], int n, int k){
     for (int i=0; i<n; i++){
@@ -168,7 +167,7 @@ void main(int argc, char **argv){
 
 	FILE * archivo = fopen(argv[1], "r");
 
-    while(fscanf(archivo, "%99[^;];%99[^;];%99[^;];%f;%f;%f;%f;%99[^;];%f;%99[^;];%99[^\n]\n", consola, publicador, desarrollador, &(ventas_g), &(ventas_EEUU), &(ventas_EU), &(ventas_Japon), salida, &(rating), generos, plataformas)!=EOF && i<1426){//como comprobar EOF
+    while(fscanf(archivo, "%99[^;];%99[^;];%99[^;];%f;%f;%f;%f;%99[^;];%f;%99[^;];%99[^\n]\n", consola, publicador, desarrollador, &(ventas_g), &(ventas_EEUU), &(ventas_EU), &(ventas_Japon), salida, &(rating), generos, plataformas)!=EOF && i<1418){//como comprobar EOF
         
         ventas_gs[i]=ventas_g;
         ventas_EEUUs[i]=ventas_EEUU;
@@ -187,16 +186,16 @@ void main(int argc, char **argv){
 
         i++;
     }
-    normalizar(ventas_gs, 1426);
-    normalizar(ventas_EEUUs, 1426);
-    normalizar(ventas_EUs, 1426);
-    normalizar(ventas_Japons, 1426);
-    normalizar(ratings, 1426);
-    normalizar(fechas, 1426);
+    normalizar(ventas_gs, 1418);
+    normalizar(ventas_EEUUs, 1418);
+    normalizar(ventas_EUs, 1418);
+    normalizar(ventas_Japons, 1418);
+    normalizar(ratings, 1418);
+    normalizar(fechas, 1418);
     
     
 
-    for (int i=0; i < 1426; i++){
+    for (int i=0; i < 1418; i++){
         dataset[i].ventas_EEUU=ventas_EEUUs[i];
         dataset[i].ventas_g=ventas_gs[i];
         dataset[i].ventas_EU=ventas_EUs[i];
@@ -210,31 +209,33 @@ void main(int argc, char **argv){
     }
 
     for (int i=0; i<250; i++){
-        control[i]=dataset[posiciones[i]];
-        dataset[i].ventas_g=0.0;
+        j=posiciones[i];
+        control[i]=dataset[j];
+        dataset[j].ventas_g=0.0;
     }
-    for (int i=0; i<1426; i++){
+
+    for (int i=0; i<1418; i++){
         if (dataset[i].ventas_g!=0) datas[i]=dataset[i];
     }
 
 
     float mediaventas=0;
-    for (i=0; i<1426; i++){
+    for (i=0; i<1418; i++){
         mediaventas+=dataset[i].ventas_g;
     }
-    mediaventas/=1426;
+    mediaventas/=1418;
 
-    set_label(dataset, 1426, mediaventas);
+    set_label(dataset, 1418, mediaventas);
 
     //ENN(dataset, 1426, 1426);//aplicar ENN (ya hecho)
     
     for (int i=1; i<=atoi(argv[2]); i++){
         aciertos=0;
         for (int j=0; j<250; j++){
-            knn(control, datas, predicciones, 1176, i, 250);
+            predicciones[j]=knn(control[j], datas, predicciones, 1168, i, 250);
         }
         for (int j=0; j<250; j++){
-            if (predicciones[j]==dataset[j].exitoso){
+            if (predicciones[j]==control[j].exitoso){
                 aciertos++;
             }
         }
